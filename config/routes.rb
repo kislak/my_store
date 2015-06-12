@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'spamer', to: 'spamer#new'
+
+  post 'spamer/create'
+
   mount Shoppe::Engine => "/shop"
   
   comfy_route :cms_admin, :path => '/admin'

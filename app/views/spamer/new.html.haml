@@ -1,0 +1,14 @@
+.row
+  = form_tag(spamer_create_path, method: :post) do |f|
+    .form-group
+      = label_tag :from, 'From:  (max 11 char, no space)'
+      = text_field_tag :from, params[:from] , { class: 'form-control' }
+    .form-group
+      = label_tag :message, 'Message'
+      = text_field_tag :message, params[:message] , { class: 'form-control' }
+    .form-group
+      = label_tag :list, 'List'
+      = text_area_tag :list, params[:list], { class: 'form-control', rows: 15 }
+    .form-group
+      .col-md-5
+      %button.btn.btn-primary.col-md-2{:type => "submit"} Submit

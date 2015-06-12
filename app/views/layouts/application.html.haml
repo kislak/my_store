@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title MyStore
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .container
+      - flash.each do |type, message|
+        %div{:class => "alert #{bootstrap_class_for(type)} alert-dismissible fade in"}
+          %button.close{"data-dismiss" => "alert"} ×
+          = message
+      = yield
+
