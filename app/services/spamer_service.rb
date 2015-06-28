@@ -11,8 +11,12 @@ class SpamerService
 
   def process
     return if errors.present?
-    @list.each do |phone|
-      @spamer.send_sms(phone, @message, {sender: @sender})
+    begin
+      @list.each do |phone|
+        @spamer.send_sms(phone, @message, {sender: @sender})
+      end
+    rescue SocketError
+      @errors = ["something go wrong: @list.each do ... failed"]
     end
   end
 
