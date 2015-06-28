@@ -11,6 +11,8 @@ class SpamerService
 
   def process
     return if errors.present?
+    return unless Rails.env == 'production'
+
     begin
       @list.each do |phone|
         @spamer.send_sms(phone, @message, {sender: @sender})
