@@ -1,5 +1,6 @@
 class SpamerController < ApplicationController
   def new
+    @contact_groups = ContactGroup.all
   end
 
   def create

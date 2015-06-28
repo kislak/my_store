@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628131401) do
+ActiveRecord::Schema.define(version: 20150628134849) do
 
   create_table "comfy_cms_blocks", force: :cascade do |t|
     t.string   "identifier",                      null: false
@@ -171,6 +171,14 @@ ActiveRecord::Schema.define(version: 20150628131401) do
     t.string  "group"
     t.string  "name"
     t.string  "value"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string   "from"
+    t.string   "message"
+    t.text     "list"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "shoppe_countries", force: :cascade do |t|
