@@ -14,7 +14,14 @@
         .col-md-5
         %button.btn.btn-primary.col-md-2{:type => "submit"} Submit
 
-  .col-md-3.contact_groups
+    .notification_history.col-md-12
+      - Notification.order('created_at desc').last(100).each do |notification|
+        .notification
+          .from= notification.from
+          .message= notification.message
+          .list= notification.list
+
+  .contact_groups.col-md-3
     - @contact_groups.each do |group|
       .contact_group
         = group.name
@@ -23,11 +30,3 @@
             .contact
               .name= contact.name
               .phone= contact.phone
-
-.row
-  .notification_history
-    - Notification.last(10).each do |notification|
-      .notification
-        .from= notification.from
-        .message= notification.message
-        .list= notification.list

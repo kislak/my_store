@@ -6,18 +6,18 @@ class NotificationsController < ApplicationController
 
   def create
     @notification = Notification.create(notification_params(params))
+
     if (@notification.valid?)
-      render :new
-      return
+      service = SpamerService.new(@notification)
+      service.process
+      if service.errors.present?
+        flash.now[:error] = "Errors:<br> #{service.errors.join('<br>')}".html_safe
+      else
+        flash.now[:success] = 'Done!'
+      end
     end
-    service = SpamerService.new(@notification)
-    service.process
-    if service.errors.present?
-      flash.now[:error] = "Errors:<br> #{service.errors.join('<br>')}".html_safe
-      render :new
-    else
-      flash.now[:success] = 'Done!'
-    end
+
+    render :new
   end
 
   private
