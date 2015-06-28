@@ -1,11 +1,15 @@
 class NotificationsController < ApplicationController
+  before_action :get_groups
   def new
-    @contact_groups = ContactGroup.all
     @notification = Notification.new
   end
 
   def create
     @notification = Notification.create(notification_params(params))
+    if (@notification.valid?)
+      render :new
+      return
+    end
     service = SpamerService.new(@notification)
     service.process
     if service.errors.present?
@@ -16,7 +20,13 @@ class NotificationsController < ApplicationController
     end
   end
 
+  private
+
   def notification_params(params)
     params.require(:notification).permit(:from, :message, :list)
+  end
+
+  def get_groups
+    @contact_groups = ContactGroup.all
   end
 end

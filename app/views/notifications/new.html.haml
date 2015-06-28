@@ -24,3 +24,10 @@
               .name= contact.name
               .phone= contact.phone
 
+.row
+  .notification_history
+    - Notification.last(10).each do |notification|
+      .notification
+        .from= notification.from
+        .message= notification.message
+        .list= notification.list
