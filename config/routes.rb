@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'spamer', to: 'spamer#new'
+  get 'spamer', to: 'notifications#new'
 
-  post 'spamer/create'
+  #post 'notification/create'
+
+  resources :notifications
 
   mount Shoppe::Engine => "/shop"
   

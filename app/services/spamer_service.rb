@@ -1,10 +1,10 @@
 class SpamerService
   attr_accessor :errors
 
-  def initialize(params)
-    @message = params[:message]
-    @sender = params[:from]
-    @list = params[:list].try(:split)
+  def initialize(notification)
+    @message = notification.message
+    @sender = notification.from
+    @list = notification.list.try(:split)
     @spamer = Spamer::Base.new(Rails.application.secrets.spamer_pub, Rails.application.secrets.spamer_priv)
     validate
   end

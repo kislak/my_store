@@ -3,19 +3,19 @@
     .pull-right
       From:
   .col-md-11.bg-success
-    = params[:from]
+    = @notification.from
 .row.top50
   .col-md-1
     .pull-right
       Message:
   .col-md-11.bg-success
-    = params[:message]
+    = @notification.message
 .row.top50
   .col-md-1
     .pull-right
       List:
   .col-md-11.bg-success
-    = params[:list].split().join('<br>').html_safe
+    = @notification.list.split().join('<br>').html_safe
 .row.top50
   .col-md-5
   = link_to 'ok', spamer_path, { class: 'btn btn-primary col-md-2' }
