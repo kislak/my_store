@@ -4,8 +4,6 @@ lock '3.1.0'
 set :application, 'my_store'
 set :repo_url, 'git@github.com:kislak/my_store.git'
 
-set :deploy_to, '/home/deploy/my_store'
-
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 

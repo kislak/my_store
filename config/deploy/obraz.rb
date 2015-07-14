@@ -18,7 +18,7 @@ role :db,  %w{deploy@store.know.by}
 set :stage, :production
 server 'store.know.by', user: 'deploy', roles: %w{web app}, my_property: :my_value
 
-set :deploy_to, '/home/deploy/my_store'
+set :deploy_to, '/home/deploy/obraz'
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
 # you can see them in [net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start)
